@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Us in Another Universe</title>
+  <title>What Drug Are You</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.cdnfonts.com/css/studio-ghibli" rel="stylesheet">
   <style>
@@ -150,8 +150,8 @@
 <body>
   <div class="container">
     <header id="intro">
-      <h1>Us in Another Universe</h1>
-      <p>A whimsical journey to discover which cartoon world we belong in...</p>
+      <h1>What Drug Are You</h1>
+      <p>A chaotic journey to discover your true drug-like essence — metaphorically, of course. 💊</p>
       <button onclick="startSurvey()">Start ✨</button>
     </header>
 
@@ -172,22 +172,99 @@
   <script>
     const questions = [
       {
-        text: "What’s your ideal weekend activity?",
+        text: "What’s your ideal Friday night?",
         image: "img/sample-question.png",
         answers: [
-          { text: "Exploring nature", value: "ghibli" },
-          { text: "Training or sparring", value: "anime" },
-          { text: "Pranking or chilling at home", value: "cartoon" },
+          { text: "Out until 4am in a place with neon lights and regrettable decisions", value: "mdma" },
+          { text: "In your room, deeply focused on a creative project you’ll abandon by Sunday", value: "nicotine" },
+          { text: "Laying in bed thinking about the universe and your 7th grade nemesis", value: "lsd" },
+          { text: "Dancing barefoot in the kitchen with someone you’re in love with", value: "weed" },
+          { text: "Lost in a random forest for 3 hours and somehow okay with it", value: "mushrooms" },
+          { text: "Telling strangers your deepest secrets in a dive bar bathroom", value: "caffeine" }
         ]
       },
+      {
+        text: "Pick a color that *feels* like your inner world:",
+        image: "img/sample-question.png",
+        answers: [
+          { text: "Electric blue", value: "mdma" },
+          { text: "Soft lavender", value: "weed" },
+          { text: "Black with gold specks", value: "lsd" },
+          { text: "Warm orange", value: "mushrooms" },
+          { text: "Shimmery green", value: "nicotine" },
+          { text: "Deep burgundy", value: "caffeine" }
+        ]
+      },
+      {
+        text: "Which quote hits a little too close?",
+        image: "img/sample-question.png",
+        answers: [
+          { text: "Chaos is a ladder.", value: "caffeine" },
+          { text: "I am a deeply sentimental lunatic with no chill.", value: "mdma" },
+          { text: "Reality is a shared hallucination.", value: "lsd" },
+          { text: "Love is stored in the weird little moments.", value: "weed" },
+          { text: "I felt myself dissolve into everything.", value: "mushrooms" },
+          { text: "I have no idea what I’m doing, but I’m doing it loud.", value: "nicotine" }
+        ]
+      },
+      {
+        text: "Your friends would describe you as:",
+        image: "img/sample-question.png",
+        answers: [
+          { text: "Wild, impulsive, lowkey legendary", value: "mdma" },
+          { text: "Mysterious, overthinking, oddly wise", value: "nicotine" },
+          { text: "Quietly intense, says little but sees everything", value: "lsd" },
+          { text: "Sweet, romantic, always the playlist curator", value: "weed" },
+          { text: "Ethereal, weird, probably barefoot", value: "mushrooms" },
+          { text: "Dramatic, emotional, strangely convincing", value: "caffeine" }
+        ]
+      },
+      {
+        text: "Your dream aesthetic is:",
+        image: "img/sample-question.png",
+        answers: [
+          { text: "Futuristic rave meets post-apocalypse", value: "mdma" },
+          { text: "Midnight library with candles and secrets", value: "nicotine" },
+          { text: "Film noir protagonist who knows too much", value: "lsd" },
+          { text: "Cottagecore meets soul-searching playlists", value: "weed" },
+          { text: "Celestial forest fairy who forgot how to speak English", value: "mushrooms" },
+          { text: "Gritty 90s indie film character in crisis", value: "caffeine" }
+        ]
+      },
+      {
+        text: "Pick your poison (metaphorically...):",
+        image: "img/sample-question.png",
+        answers: [
+          { text: "Instant gratification", value: "mdma" },
+          { text: "Artistic obsession", value: "nicotine" },
+          { text: "Hyperawareness", value: "lsd" },
+          { text: "Affection", value: "weed" },
+          { text: "Dissociation", value: "mushrooms" },
+          { text: "Self-sabotage, but with flair", value: "caffeine" }
+        ]
+      },
+      {
+        text: "One word to describe your vibe:",
+        image: "img/sample-question.png",
+        answers: [
+          { text: "Electric", value: "mdma" },
+          { text: "Brooding", value: "nicotine" },
+          { text: "Intense", value: "lsd" },
+          { text: "Warm", value: "weed" },
+          { text: "Cosmic", value: "mushrooms" },
+          { text: "Messy", value: "caffeine" }
+        ]
+      },
+
       {
         text: "Final Question: Would you like to be my girlfriend?",
         image: "img/sample-question.png",
         answers: [
           { text: "Yes 💖", value: "yes" },
-          { text: "No 😢", value: "no" },
+          { text: "No 😢", value: "no" }
         ]
       }
+
     ];
 
     let currentQuestion = 0;
