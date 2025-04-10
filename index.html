@@ -363,7 +363,12 @@
       scores[value]++;
       currentQuestion++;
       if (currentQuestion < questions.length) {
-        setTimeout(showQuestion, NEXT_QUESTION_DELAY);
+        const nextImage = new Image();
+        nextImage.src = questions[currentQuestion].image;
+      
+        nextImage.onload = () => {
+          setTimeout(showQuestion, NEXT_QUESTION_DELAY);
+        };
       }
     }
 
