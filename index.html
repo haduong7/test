@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What Drug Are You</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.cdnfonts.com/css/studio-ghibli" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <style>
     body {
         margin: 0;
-        font-family: 'Studio Ghibli', serif;
+        font-family: "VT323", monospace;
         background-color: #c0e7c9;
         color: #333;
         display: flex;
@@ -46,7 +48,7 @@
 
     .question {
       margin-bottom: 2rem;
-      font-family: 'Studio Ghibli', serif;
+      font-family: "VT323", monospace;
       text-align: center;
     }
 
@@ -79,7 +81,7 @@
       border-radius: 12px;
       border: none;
       background-color: #ffeed6;
-      font-family: 'Studio Ghibli', serif;
+      font-family: "VT323", monospace;
       cursor: pointer;
       transition: background-color 0.2s;
     }
@@ -170,100 +172,155 @@
   </div>
 
   <script>
-    const questions = [
-      {
-        text: "What’s your ideal Friday night?",
-        image: "img/sample-question.png",
-        answers: [
-          { text: "Out until 4am in a place with neon lights and regrettable decisions", value: "mdma" },
-          { text: "In your room, deeply focused on a creative project you’ll abandon by Sunday", value: "nicotine" },
-          { text: "Laying in bed thinking about the universe and your 7th grade nemesis", value: "lsd" },
-          { text: "Dancing barefoot in the kitchen with someone you’re in love with", value: "weed" },
-          { text: "Lost in a random forest for 3 hours and somehow okay with it", value: "mushrooms" },
-          { text: "Telling strangers your deepest secrets in a dive bar bathroom", value: "caffeine" }
-        ]
-      },
-      {
-        text: "Pick a color that *feels* like your inner world:",
-        image: "img/sample-question.png",
-        answers: [
-          { text: "Electric blue", value: "mdma" },
-          { text: "Soft lavender", value: "weed" },
-          { text: "Black with gold specks", value: "lsd" },
-          { text: "Warm orange", value: "mushrooms" },
-          { text: "Shimmery green", value: "nicotine" },
-          { text: "Deep burgundy", value: "caffeine" }
-        ]
-      },
-      {
-        text: "Which quote hits a little too close?",
-        image: "img/sample-question.png",
-        answers: [
-          { text: "Chaos is a ladder.", value: "caffeine" },
-          { text: "I am a deeply sentimental lunatic with no chill.", value: "mdma" },
-          { text: "Reality is a shared hallucination.", value: "lsd" },
-          { text: "Love is stored in the weird little moments.", value: "weed" },
-          { text: "I felt myself dissolve into everything.", value: "mushrooms" },
-          { text: "I have no idea what I’m doing, but I’m doing it loud.", value: "nicotine" }
-        ]
-      },
-      {
-        text: "Your friends would describe you as:",
-        image: "img/sample-question.png",
-        answers: [
-          { text: "Wild, impulsive, lowkey legendary", value: "mdma" },
-          { text: "Mysterious, overthinking, oddly wise", value: "nicotine" },
-          { text: "Quietly intense, says little but sees everything", value: "lsd" },
-          { text: "Sweet, romantic, always the playlist curator", value: "weed" },
-          { text: "Ethereal, weird, probably barefoot", value: "mushrooms" },
-          { text: "Dramatic, emotional, strangely convincing", value: "caffeine" }
-        ]
-      },
-      {
-        text: "Your dream aesthetic is:",
-        image: "img/sample-question.png",
-        answers: [
-          { text: "Futuristic rave meets post-apocalypse", value: "mdma" },
-          { text: "Midnight library with candles and secrets", value: "nicotine" },
-          { text: "Film noir protagonist who knows too much", value: "lsd" },
-          { text: "Cottagecore meets soul-searching playlists", value: "weed" },
-          { text: "Celestial forest fairy who forgot how to speak English", value: "mushrooms" },
-          { text: "Gritty 90s indie film character in crisis", value: "caffeine" }
-        ]
-      },
-      {
-        text: "Pick your poison (metaphorically...):",
-        image: "img/sample-question.png",
-        answers: [
-          { text: "Instant gratification", value: "mdma" },
-          { text: "Artistic obsession", value: "nicotine" },
-          { text: "Hyperawareness", value: "lsd" },
-          { text: "Affection", value: "weed" },
-          { text: "Dissociation", value: "mushrooms" },
-          { text: "Self-sabotage, but with flair", value: "caffeine" }
-        ]
-      },
-      {
-        text: "One word to describe your vibe:",
-        image: "img/sample-question.png",
-        answers: [
-          { text: "Electric", value: "mdma" },
-          { text: "Brooding", value: "nicotine" },
-          { text: "Intense", value: "lsd" },
-          { text: "Warm", value: "weed" },
-          { text: "Cosmic", value: "mushrooms" },
-          { text: "Messy", value: "caffeine" }
-        ]
-      },
 
-      {
-        text: "Final Question: Would you like to be my girlfriend?",
-        image: "img/sample-question.png",
-        answers: [
-          { text: "Yes 💖", value: "yes" },
-          { text: "No 😢", value: "no" }
-        ]
-      }
+    const NEXT_QUESTION_DELAY = 300;
+
+    const questions = [
+        {
+            text: "What’s your ideal Friday night?",
+            image: "img/1.png",
+            answers: [
+            { text: "Dinner and deep talks with close friends", value: "weed" },
+            { text: "At home binge-watching something niche", value: "nicotine" },
+            { text: "Trying something spontaneous last-minute", value: "mdma" },
+            { text: "Laying in bed with music and your thoughts", value: "lsd" }
+            ]
+        },
+        {
+            text: "Pick a color that *feels* like your inner world:",
+            image: "img/2.png",
+            answers: [
+            { text: "Electric blue", value: "mdma" },
+            { text: "Lavender haze", value: "weed" },
+            { text: "Black w/ gold specks", value: "lsd" },
+            { text: "Warm orange glow", value: "mushrooms" }
+            ]
+        },
+        {
+            text: "Your friends would describe you as:",
+            image: "img/3.png",
+            answers: [
+            { text: "Wild & legendary", value: "mdma" },
+            { text: "Overthinking & cool", value: "nicotine" },
+            { text: "Sweet & playlist queen", value: "weed" },
+            { text: "Quiet but intense", value: "lsd" }
+            ]
+        },
+        {
+            text: "Your dream aesthetic is:",
+            image: "img/4.png",
+            answers: [
+            { text: "Rave-apocalypse", value: "mdma" },
+            { text: "Moody candlelit library", value: "nicotine" },
+            { text: "Cottagecore soul", value: "weed" },
+            { text: "Celestial forest witch", value: "mushrooms" }
+            ]
+        },
+        {
+            text: "One word to describe your vibe:",
+            image: "img/5.png",
+            answers: [
+            { text: "Electric", value: "mdma" },
+            { text: "Brooding", value: "nicotine" },
+            { text: "Cosmic", value: "mushrooms" },
+            { text: "Warm", value: "weed" }
+            ]
+        },
+        {
+            text: "How do you handle chaos?",
+            image: "img/6.png",
+            answers: [
+            { text: "Lean into the madness", value: "mdma" },
+            { text: "Analyze it deeply", value: "nicotine" },
+            { text: "Transcend it", value: "lsd" },
+            { text: "Laugh and vibe", value: "weed" }
+            ]
+        },
+        {
+            text: "What’s your toxic trait?",
+            image: "img/7.png",
+            answers: [
+            { text: "Trusting too easily", value: "mdma" },
+            { text: "Overthinking texts", value: "nicotine" },
+            { text: "Spacing out mid convo", value: "lsd" },
+            { text: "Romanticizing chaos", value: "caffeine" }
+            ]
+        },
+        {
+            text: "Pick your comfort activity:",
+            image: "img/8.png",
+            answers: [
+            { text: "Dancing alone", value: "mdma" },
+            { text: "Journaling at 2am", value: "nicotine" },
+            { text: "Staring at the stars", value: "lsd" },
+            { text: "Watching old movies", value: "weed" }
+            ]
+        },
+        {
+            text: "What’s the vibe of your favorite playlist?",
+            image: "img/9.png",
+            answers: [
+            { text: "Euphoric bangers", value: "mdma" },
+            { text: "Sad girl indie", value: "nicotine" },
+            { text: "Dreamy and existential", value: "lsd" },
+            { text: "Soft and romantic", value: "weed" }
+            ]
+        },
+
+        {
+            text: "What drug were you on when you found the love of your life?",
+            image: "img/10.jpg",
+            answers: [
+            { text: "MDMA", value: "mdma" },
+            { text: "Ketamine", value: "nicotine" },
+            { text: "Nicotine", value: "lsd" }
+            ]
+        },
+
+        {
+            text: "Do you love him?",
+            image: "img/11.jpg",
+            answers: [
+            { text: "Yes"},
+            { text: "Yes"},
+            { text: "Yes"}
+            ]
+        },
+
+        {
+            text: "Do you like spending time with him?",
+            image: "img/12.jpg",
+            answers: [
+            { text: "Yes"},
+            { text: "No"}
+            ]
+        },
+
+        {
+            text: "He wants you to know he loves every moment with you",
+            image: "img/13.jpeg",
+            answers: [
+            { text: "I know"},
+            ]
+        },
+
+        {
+            text: "Are you enjoying this website",
+            image: "img/website.PNG",
+            answers: [
+            { text: "Yes"},
+            { text: "No"}
+            ]
+        },
+
+        {
+            text: "Will you be my girlfriend?",
+            image: "img/15.PNG",
+            answers: [
+            { text: "Yes 💖", value: "yes" },
+            { text: "No 😢", value: "no" }
+            ]
+        }
 
     ];
 
@@ -306,7 +363,7 @@
       scores[value]++;
       currentQuestion++;
       if (currentQuestion < questions.length) {
-        showQuestion();
+        setTimeout(showQuestion, NEXT_QUESTION_DELAY);
       }
     }
 
@@ -384,37 +441,37 @@
       yesButton.style.transform = `scale(${1 + noClickCount * 0.1})`;
 
       const messages = [
-        "Are you sure? 😢",
-        "Really sure? 😭",
-        "I'll wait... 💔",
-        "But we’d be so cute together 🥺",
-        "Think about the adventures ✨",
-        "Don't break Totoro's heart 🐻",
-        "Maybe give it one more thought? 😶‍🌫️",
-        "I made this whole site for you... 😳",
-        "What if we’re soulmates in every universe? 🌌",
-        "Last chance before I cry in a field of flowers 🌸😭"
+        "No",
+        "No",
+        "No",
+        "No",
+        "No",
+        "No",
+        "No",
+        "No",
+        "No",
+        "No",
       ];
 
       const encouragements = [
-        "😢 Even in another universe, I’d still choose you. But I won’t give up just yet.",
-        "🥺 You're making this hard for me... but I'm still here.",
-        "💗 I can wait a little longer, even if my heart can't.",
-        "🌧️ This hurts a little, but I still believe in us.",
-        "💌 Every love story needs a turning point, right?",
-        "🕊️ In a Ghibli world, you'd already have said yes...",
-        "⏳ I'm staying hopeful. Just a little longer.",
-        "📖 This story could be magical—just say yes?",
-        "🌙 Every universe is better with you in it.",
-        "🌸 My heart’s still holding on. Could you?"
+        "Sure?",
+        "Really sure?",
+        "Really??... 💔",
+        "Baby?",
+        "Think about Pompo, Shu, and P",
+        "Ok thats enough",
+        "Baby I made a website and everything",
+        "BABY WTF",
+        "Just click yes",
+        "Last chance u better click yes rn or Ima rock ur shit"
       ];
 
       if (noClickCount <= messages.length) {
         noButton.textContent = messages[noClickCount - 1];
         resultDiv.innerHTML = encouragements[noClickCount - 1];
       } else {
-        noButton.textContent = "Okay... I’ll still cherish this moment 💔";
-        resultDiv.innerHTML = "Thank you for exploring this universe with me, even if it ends here.";
+        noButton.textContent = "Baby that's enough";
+        resultDiv.innerHTML = "Bruh";
 
         noButton.style.position = 'absolute';
         noButton.style.transition = 'top 0.1s, left 0.1s';
