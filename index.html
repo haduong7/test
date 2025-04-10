@@ -370,42 +370,46 @@
     function showQuestion() {
       const container = document.getElementById('questionContainer');
       container.innerHTML = '';
+    
       const q = questions[currentQuestion];
       const qDiv = document.createElement('div');
       qDiv.className = 'question';
-
+    
       const label = document.createElement('label');
       label.textContent = q.text;
       qDiv.appendChild(label);
-
-      const image = document.createElement('img');
+    
+      const image = new Image(); // Preload using JS constructor
       image.src = q.image;
       image.alt = 'Question Image';
-      qDiv.appendChild(image);
-
-      const choicesDiv = document.createElement('div');
-      choicesDiv.className = 'choices';
-
-      q.answers.forEach(answer => {
-        const btn = document.createElement('button');
-        btn.textContent = answer.text;
-        btn.onclick = (e) => {
-          e.preventDefault();
-          handleAnswer(answer.value);
-        };
-
-        if (answer.value === 'yes') {
-          btn.style.backgroundColor = '#b2f2bb';
-        } else if (answer.value === 'no') {
-          btn.style.backgroundColor = '#ffc9c9';
-        }
-
-        choicesDiv.appendChild(btn);
-      });
-
-      qDiv.appendChild(choicesDiv);
-      container.appendChild(qDiv);
+      image.onload = () => {
+        qDiv.appendChild(image); // Only append after it's loaded
+    
+        const choicesDiv = document.createElement('div');
+        choicesDiv.className = 'choices';
+    
+        q.answers.forEach(answer => {
+          const btn = document.createElement('button');
+          btn.textContent = answer.text;
+          btn.onclick = (e) => {
+            e.preventDefault();
+            handleAnswer(answer.value);
+          };
+    
+          if (answer.value === 'yes') {
+            btn.style.backgroundColor = '#b2f2bb';
+          } else if (answer.value === 'no') {
+            btn.style.backgroundColor = '#ffc9c9';
+          }
+    
+          choicesDiv.appendChild(btn);
+        });
+    
+        qDiv.appendChild(choicesDiv);
+        container.appendChild(qDiv);
+      };
     }
+
 
     function showFinalResult(finalAnswer) {
       const container = document.getElementById('questionContainer');
